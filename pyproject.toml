@@ -6,7 +6,9 @@ build-backend = "poetry.core.masonry.api"
 name = "easy_gui_prompt"
 version = "2024.05.24"
 description = "Simplify the creation of GUI elements in the terminal"
-authors = [ "Ricardo Henriques <ricardo@henriqueslab.org>", "Bruno Saraiva <bruno.msaraiva2@gmail.com>", "António Brito <antmsbrito95@gmail.com>",]
+license = "MIT"
+repository = "https://github.com/HenriquesLab/easy-gui-prompt"
+authors = [ "Ricardo Henriques <ricardo@henriqueslab.org>", "Bruno Saraiva <bruno.msaraiva2@gmail.com>",]
 readme = "README.md"
 
 [tool.poetry.dependencies]
