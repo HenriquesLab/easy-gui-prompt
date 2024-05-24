@@ -2,7 +2,6 @@
 
 [![PyPI version](https://badge.fury.io/py/easy_gui_prompt.svg)](https://badge.fury.io/py/easy_gui_prompt)
 [![Python versions](https://img.shields.io/pypi/pyversions/easy_gui_prompt.svg)](https://pypi.org/project/easy_gui_prompt/)
-[![Downloads](https://pepy.tech/badge/easy_gui_prompt)](https://pepy.tech/project/easy_gui_prompt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Python library to simplify the creation of GUI elements in the terminal using prompt-toolkit.
