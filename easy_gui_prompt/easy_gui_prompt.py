@@ -10,7 +10,7 @@ from prompt_toolkit.validation import Validator
 
 from pathlib import Path
 
-CONFIG_FILE = Path.home() / ".easy_gui" / "easy_gui.yml"
+CONFIG_PATH = Path.home() / ".easy_gui"
 
 
 def get_config(title: str):
@@ -20,10 +20,12 @@ def get_config(title: str):
     :param title: title of the GUI
     """
 
-    if not CONFIG_FILE.exists():
+    config_file = CONFIG_PATH / f"{title}.yml"
+
+    if not config_file.exists():
         return {}
 
-    with open(CONFIG_FILE, "r") as f:
+    with open(config_file, "r") as f:
         cfg = yaml.load(f, Loader=yaml.SafeLoader)
 
     if title is None:
@@ -41,12 +43,13 @@ def save_config(title: str, cfg: dict):
     :param title: title of the GUI
     :param cfg: configuration dictionary
     """
-    CONFIG_FILE.parent.mkdir(exist_ok=True)
+    config_file = CONFIG_PATH / f"{title}.yml"
+    config_file.parent.mkdir(exist_ok=True)
 
     base_config = get_config(None)  # loads the config file
     base_config[title] = cfg
 
-    with open(CONFIG_FILE, "w") as f:
+    with open(config_file, "w") as f:
         yaml.dump(base_config, f)
 
 
