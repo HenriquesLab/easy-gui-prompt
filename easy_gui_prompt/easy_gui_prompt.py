@@ -62,6 +62,23 @@ class EasyGUI:
         self.title = title
         self.cfg = get_config(title)
 
+    def __getvalue__(self, tag: str):
+        """
+        Get the value of a widget.
+        :param tag: tag to identify the widget
+        :return: the value of the widget
+        """
+        return self.cfg[tag]
+
+    def add_header(self, message: str):
+        """
+        Add a header to the GUI.
+        :param message: the message to display
+        """
+        print("-" * len(message))
+        print(message)
+        print("-" * len(message))
+
     def add_yes_no(
         self, tag: str, message: str, *args, remember_value=False, **kwargs
     ) -> bool:

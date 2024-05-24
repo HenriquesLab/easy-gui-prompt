@@ -1,8 +1,8 @@
-Here is a suggested README.md for the easy_gui_prompt project:
+# Easy GUI Prompt
 
-```markdown
-# easy_gui_prompt
-
+[![PyPI version](https://badge.fury.io/py/easy_gui_prompt.svg)](https://badge.fury.io/py/easy_gui_prompt)
+[![Python versions](https://img.shields.io/pypi/pyversions/easy_gui_prompt.svg)](https://pypi.org/project/easy_gui_prompt/)
+[![Downloads](https://pepy.tech/badge/easy_gui_prompt)](https://pepy.tech/project/easy_gui_prompt)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Python library to simplify the creation of GUI elements in the terminal using prompt-toolkit.
@@ -56,7 +56,7 @@ gui.restore_default_settings()
 
 ## Configuration
 
-The library automatically saves user preferences to a configuration file located at `~/.easy_gui/easy_gui.yml`. This allows the GUI to remember the last entered values when `remember_value=True` is used.
+The library automatically saves user preferences to onfiguration files in `~/.easy_gui/`. This allows the GUI to remember the last entered values when `remember_value=True` is used.
 
 You can also access the configuration directly using the `get_config` and `save_config` functions:
 
