@@ -1,0 +1,12 @@
+__pycache__/
+.venv/*
+dist/*
+*.pyc
+*.log
+*.whl
+.git/*
+.gptignore
+LICENSE
+.github/*
+.tox
+poetry.lock

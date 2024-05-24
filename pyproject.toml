@@ -1,0 +1,28 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "easy_gui_prompt"
+version = "2024.05.24"
+description = "Simplify the creation of GUI elements in the terminal"
+authors = [ "Ricardo Henriques <ricardo@henriqueslab.org>", "Bruno Saraiva <bruno.msaraiva2@gmail.com>", "António Brito <antmsbrito95@gmail.com>",]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyyaml = "^6.0.1"
+toml = "^0.10.2"
+prompt-toolkit = "^3.0.43"
+
+[tool.pytest.ini_options]
+testpaths = [ "tests",]
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.7.0"
+ruff = "^0.4.3"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.2.0"
+pytest-xdist = "^3.6.1"
+gptrepo = "^1.0.3"
