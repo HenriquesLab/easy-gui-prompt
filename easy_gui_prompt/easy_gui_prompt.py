@@ -123,8 +123,70 @@ class EasyGUI:
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = self.cfg[tag]
-        value = prompt(*args, **kwargs)
+        value = prompt(message=message + ": ", *args, **kwargs)
         self.cfg[tag] = value
+        return self.cfg[tag]
+
+    def add_dropdown(
+        self,
+        tag: str,
+        message: str,
+        choices: list,
+        *args,
+        remember_value=False,
+        **kwargs,
+    ) -> str:
+        """
+        Add a dropdown prompt to the GUI.
+        :param tag: tag to identify the widget
+        :param message: the message to display
+        :param choices: list of choices for the dropdown
+        :param args: args for the prompt
+        :param remember_value: remember the last value
+        :param kwargs: kwargs for the prompt
+        :return: the selected choice
+        """
+        if remember_value and tag in self.cfg:
+            kwargs["default"] = self.cfg[tag]
+
+        value = prompt(
+            *args,
+            message=message + ": ",
+            completer=WordCompleter(choices),
+            validator=Validator.from_callable(
+                lambda x: x in choices,
+                error_message="Please select a valid choice from the dropdown.",
+                move_cursor_to_end=True,
+            ),
+            **kwargs,
+        )
+        self.cfg[tag] = value
+        return self.cfg[tag]
+
+    def add_int(
+        self, tag: str, message: str, *args, remember_value=False, **kwargs
+    ) -> int:
+        """
+        Add an integer prompt to the GUI.
+        :param tag: tag to identify the widget
+        :param args: args for the prompt
+        :param remember_value: remember the last value
+        :param kwargs: kwargs for the prompt
+        :return: the integer entered
+        """
+        if remember_value and tag in self.cfg:
+            kwargs["default"] = str(self.cfg[tag])
+        value = prompt(
+            *args,
+            message=message + ": ",
+            validator=Validator.from_callable(
+                lambda x: x.isdigit(),
+                error_message="Please enter a valid number.",
+                move_cursor_to_end=True,
+            ),
+            **kwargs,
+        )
+        self.cfg[tag] = int(value)
         return self.cfg[tag]
 
     def add_int_range(
