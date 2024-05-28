@@ -1,23 +1,26 @@
+import yaml
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.validation import Validator
+from pathlib import Path
+
 """
 A module to help simplify the create of GUIs in terminals using python prompt-toolkit.
 """
 
-import yaml
 
-from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter
-from prompt_toolkit.validation import Validator
-
-from pathlib import Path
-
-CONFIG_PATH = Path.home() / ".easy_gui"
+CONFIG_PATH = Path.home() / ".config" / "easy_gui"
 
 
 def get_config(title: str):
     """
     Get the configuration dictionary without needing to initialize the GUI.
 
-    :param title: title of the GUI
+    Args:
+        title (str): Title of the GUI.
+
+    Returns:
+        dict: The configuration dictionary.
     """
 
     config_file = CONFIG_PATH / f"{title}.yml"
@@ -40,8 +43,9 @@ def save_config(title: str, cfg: dict):
     """
     Save the configuration dictionary to a file.
 
-    :param title: title of the GUI
-    :param cfg: configuration dictionary
+    Args:
+        title (str): Title of the GUI.
+        cfg (dict): Configuration dictionary.
     """
     config_file = CONFIG_PATH / f"{title}.yml"
     config_file.parent.mkdir(exist_ok=True)
@@ -57,7 +61,9 @@ class EasyGUI:
     def __init__(self, title: str):
         """
         Initialize the GUI.
-        :param title: title of the GUI
+
+        Args:
+            title (str): Title of the GUI.
         """
         self.title = title
         self.cfg = get_config(title)
@@ -65,15 +71,21 @@ class EasyGUI:
     def __getvalue__(self, tag: str):
         """
         Get the value of a widget.
-        :param tag: tag to identify the widget
-        :return: the value of the widget
+
+        Args:
+            tag (str): Tag to identify the widget.
+
+        Returns:
+            Any: The value of the widget.
         """
         return self.cfg[tag]
 
     def add_header(self, message: str):
         """
         Add a header to the GUI.
-        :param message: the message to display
+
+        Args:
+            message (str): The message to display.
         """
         print("-" * len(message))
         print(message)
@@ -84,11 +96,14 @@ class EasyGUI:
     ) -> bool:
         """
         Add a yes/no prompt to the GUI.
-        :param tag: tag to identify the widget
-        :param args: args for the prompt
-        :param remember_value: remember the last value
-        :param kwargs: kwargs for the prompt
-        :return: True if yes, False if no
+
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
+
+        Returns:
+            bool: True if yes, False if no.
         """
         if remember_value and tag in self.cfg:
             if self.cfg[tag]:
@@ -115,11 +130,14 @@ class EasyGUI:
     ) -> str:
         """
         Add a text prompt to the GUI.
-        :param tag: tag to identify the widget
-        :param args: args for the prompt
-        :param remember_value: remember the last value
-        :param kwargs: kwargs for the prompt
-        :return: the text entered
+
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
+
+        Returns:
+            str: The text entered.
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = self.cfg[tag]
@@ -138,13 +156,15 @@ class EasyGUI:
     ) -> str:
         """
         Add a dropdown prompt to the GUI.
-        :param tag: tag to identify the widget
-        :param message: the message to display
-        :param choices: list of choices for the dropdown
-        :param args: args for the prompt
-        :param remember_value: remember the last value
-        :param kwargs: kwargs for the prompt
-        :return: the selected choice
+
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+            choices (list): List of choices for the dropdown.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
+
+        Returns:
+            str: The selected choice.
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = self.cfg[tag]
@@ -168,11 +188,14 @@ class EasyGUI:
     ) -> int:
         """
         Add an integer prompt to the GUI.
-        :param tag: tag to identify the widget
-        :param args: args for the prompt
-        :param remember_value: remember the last value
-        :param kwargs: kwargs for the prompt
-        :return: the integer entered
+
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
+
+        Returns:
+            int: The integer entered.
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
@@ -201,9 +224,16 @@ class EasyGUI:
     ) -> int:
         """
         Add an integer range to the GUI.
-        :param tag: tag to identify the widget
-        :param args: args for the prompt
 
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+            vmin (int): Minimum value of the range.
+            vmax (int): Maximum value of the range.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
+
+        Returns:
+            int: The integer entered.
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
