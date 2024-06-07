@@ -1,6 +1,6 @@
 import yaml
 from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.completion import WordCompleter, PathCompleter
 from prompt_toolkit.validation import Validator
 from pathlib import Path
 
@@ -249,6 +249,31 @@ class EasyGUI:
             **kwargs,
         )
         self.cfg[tag] = int(value)
+        return self.cfg[tag]
+
+    def add_path_completer(self, tag: str, message: str, *args, **kwargs) -> Path:
+        """
+        Add a path completer to the GUI.
+
+        Args:
+            tag (str): Tag to identify the widget.
+            message (str): The message to display.
+
+        Returns:
+            Path: The path entered.
+        """
+        value = prompt(
+            *args,
+            message=message + ": ",
+            completer=PathCompleter(),
+            validator=Validator.from_callable(
+                lambda x: Path(x).exists(),
+                error_message="Please enter a valid path.",
+                move_cursor_to_end=True,
+            ),
+            **kwargs,
+        )
+        self.cfg[tag] = Path(value)
         return self.cfg[tag]
 
     def save_settings(self):
