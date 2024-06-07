@@ -251,17 +251,23 @@ class EasyGUI:
         self.cfg[tag] = int(value)
         return self.cfg[tag]
 
-    def add_path_completer(self, tag: str, message: str, *args, **kwargs) -> Path:
+    def add_path_completer(
+        self, tag: str, message: str, *args, remember_value=False, **kwargs
+    ) -> Path:
         """
         Add a path completer to the GUI.
 
         Args:
             tag (str): Tag to identify the widget.
             message (str): The message to display.
+            remember_value (bool, optional): Remember the last value. Defaults to False.
 
         Returns:
             Path: The path entered.
         """
+        if remember_value and tag in self.cfg:
+            kwargs["default"] = str(self.cfg[tag])
+
         value = prompt(
             *args,
             message=message + ": ",
