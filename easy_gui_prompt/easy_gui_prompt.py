@@ -107,6 +107,9 @@ class EasyGUI:
         Returns:
             bool: True if yes, False if no.
         """
+        if "default" in kwargs and isinstance(kwargs["default"], bool):
+            kwargs["default"] = "yes" if kwargs["default"] else "no"
+
         if remember_value and tag in self.cfg:
             if self.cfg[tag]:
                 kwargs["default"] = "yes"
@@ -199,6 +202,9 @@ class EasyGUI:
         Returns:
             int: The integer entered.
         """
+        if "default" in kwargs and isinstance(kwargs["default"], int):
+            kwargs["default"] = str(kwargs["default"])
+
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
         value = prompt(  # type: ignore[misc]
@@ -237,6 +243,9 @@ class EasyGUI:
         Returns:
             int: The integer entered.
         """
+        if "default" in kwargs and isinstance(kwargs["default"], int):
+            kwargs["default"] = str(kwargs["default"])
+
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
 
