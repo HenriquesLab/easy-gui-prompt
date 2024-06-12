@@ -1,13 +1,13 @@
-.PHONY: help install lint format test docs all
+.PHONY: help install lint format pytest mypy docs
 
 help:
 	@echo "Available commands:"
-	@echo "  install                Install dependencies using Poetry"
-	@echo "  lint                   Run linters using pre-commit"
-	@echo "  format                 Run formatters using pre-commit"
-	@echo "  test                   Run tests using pytest"
-	@echo "  docs                   Generate documentation using pdoc"
-	@echo "  all                    Run install, lint, test, and generate-docs"
+	@echo "  install                    Install dependencies using Poetry"
+	@echo "  lint                       Run linters using pre-commit"
+	@echo "  format                     Run formatters using pre-commit"
+	@echo "  pytest                     Run tests using pytest"
+	@echo "  mypy                       Run type-checking using mypy"
+	@echo "  docs                       Generate documentation using lazydocs"
 
 install:
 	poetry install
@@ -18,12 +18,13 @@ lint:
 format:
 	pre-commit run ruff-format --all-files
 
-test:
+pytest:
 	poetry run pytest
+
+mypy:
+	poetry run mypy --ignore-missing-imports easy_gui_prompt
 
 docs:
 	poetry run lazydocs --overview-file="README.md" easy_gui_prompt
 
-all: install lint test docs
-
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := help
