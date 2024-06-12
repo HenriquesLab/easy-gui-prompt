@@ -4,7 +4,7 @@
 
 ## Modules
 
-- [`easy_gui_prompt`](./easy_gui_prompt.md#module-easy_gui_prompt): A module to help simplify the create of GUIs in terminals using python prompt-toolkit.
+- [`easy_gui_prompt`](./easy_gui_prompt.md#module-easy_gui_prompt)
 
 ## Classes
 

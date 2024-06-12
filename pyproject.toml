@@ -25,6 +25,7 @@ testpaths = [ "tests",]
 pre-commit = "^3.7.0"
 ruff = "^0.4.3"
 lazydocs = "^0.4.8"
+mypy = "^1.10.0"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^8.2.0"

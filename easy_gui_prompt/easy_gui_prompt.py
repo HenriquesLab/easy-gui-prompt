@@ -4,6 +4,8 @@ from prompt_toolkit.completion import WordCompleter, PathCompleter
 from prompt_toolkit.validation import Validator
 from pathlib import Path
 
+from typing import Optional
+
 """
 A module to help simplify the create of GUIs in terminals using python prompt-toolkit.
 """
@@ -12,12 +14,12 @@ A module to help simplify the create of GUIs in terminals using python prompt-to
 CONFIG_PATH = Path.home() / ".config" / "easy_gui"
 
 
-def get_config(title: str):
+def get_config(title: Optional[str]):
     """
     Get the configuration dictionary without needing to initialize the GUI.
 
     Args:
-        title (str): Title of the GUI.
+        title (str): Title of the GUI. If None, returns the entire configuration dictionary.
 
     Returns:
         dict: The configuration dictionary.
@@ -111,7 +113,7 @@ class EasyGUI:
             else:
                 kwargs["default"] = "no"
 
-        value = prompt(
+        value = prompt(  # type: ignore[misc]
             *args,
             message=message + " (yes/no): ",
             completer=WordCompleter(["yes", "no"]),
@@ -141,7 +143,7 @@ class EasyGUI:
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = self.cfg[tag]
-        value = prompt(message=message + ": ", *args, **kwargs)
+        value = prompt(message=message + ": ", *args, **kwargs)  # type: ignore[misc]
         self.cfg[tag] = value
         return self.cfg[tag]
 
@@ -169,7 +171,7 @@ class EasyGUI:
         if remember_value and tag in self.cfg:
             kwargs["default"] = self.cfg[tag]
 
-        value = prompt(
+        value = prompt(  # type: ignore[misc]
             *args,
             message=message + ": ",
             completer=WordCompleter(choices),
@@ -199,7 +201,7 @@ class EasyGUI:
         """
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
-        value = prompt(
+        value = prompt(  # type: ignore[misc]
             *args,
             message=message + ": ",
             validator=Validator.from_callable(
@@ -238,7 +240,7 @@ class EasyGUI:
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
 
-        value = prompt(
+        value = prompt(  # type: ignore[misc]
             *args,
             message=message + f" ({vmin}-{vmax}): ",
             validator=Validator.from_callable(
@@ -268,7 +270,7 @@ class EasyGUI:
         if remember_value and tag in self.cfg:
             kwargs["default"] = str(self.cfg[tag])
 
-        value = prompt(
+        value = prompt(  # type: ignore[misc]
             *args,
             message=message + ": ",
             completer=PathCompleter(),

@@ -3,27 +3,39 @@
 <a href="../easy_gui_prompt/easy_gui_prompt.py#L0"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 # <kbd>module</kbd> `easy_gui_prompt`
-A module to help simplify the create of GUIs in terminals using python prompt-toolkit. 
+
+
+
 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L16"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L17"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `get_config`
 
 ```python
-get_config(title: str)
+get_config(title: Optional[str])
 ```
 
 Get the configuration dictionary without needing to initialize the GUI. 
 
-:param title: title of the GUI 
+
+
+**Args:**
+ 
+ - <b>`title`</b> (str):  Title of the GUI. If None, returns the entire configuration dictionary. 
+
+
+
+**Returns:**
+ 
+ - <b>`dict`</b>:  The configuration dictionary. 
 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L39"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L44"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>function</kbd> `save_config`
 
@@ -33,19 +45,24 @@ save_config(title: str, cfg: dict)
 
 Save the configuration dictionary to a file. 
 
-:param title: title of the GUI :param cfg: configuration dictionary 
+
+
+**Args:**
+ 
+ - <b>`title`</b> (str):  Title of the GUI. 
+ - <b>`cfg`</b> (dict):  Configuration dictionary. 
 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L56"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L62"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ## <kbd>class</kbd> `EasyGUI`
 
 
 
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L57"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L63"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `__init__`
 
@@ -53,14 +70,20 @@ Save the configuration dictionary to a file.
 __init__(title: str)
 ```
 
-Initialize the GUI. :param title: title of the GUI 
+Initialize the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`title`</b> (str):  Title of the GUI. 
 
 
 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L130"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L150"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_dropdown`
 
@@ -75,11 +98,26 @@ add_dropdown(
 ) → str
 ```
 
-Add a dropdown prompt to the GUI. :param tag: tag to identify the widget :param message: the message to display :param choices: list of choices for the dropdown :param args: args for the prompt :param remember_value: remember the last value :param kwargs: kwargs for the prompt :return: the selected choice 
+Add a dropdown prompt to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`choices`</b> (list):  List of choices for the dropdown. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The selected choice. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L73"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L85"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_header`
 
@@ -87,11 +125,17 @@ Add a dropdown prompt to the GUI. :param tag: tag to identify the widget :param 
 add_header(message: str)
 ```
 
-Add a header to the GUI. :param message: the message to display 
+Add a header to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`message`</b> (str):  The message to display. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L166"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L188"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_int`
 
@@ -99,11 +143,25 @@ Add a header to the GUI. :param message: the message to display
 add_int(tag: str, message: str, *args, remember_value=False, **kwargs) → int
 ```
 
-Add an integer prompt to the GUI. :param tag: tag to identify the widget :param args: args for the prompt :param remember_value: remember the last value :param kwargs: kwargs for the prompt :return: the integer entered 
+Add an integer prompt to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`int`</b>:  The integer entered. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L192"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L217"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_int_range`
 
@@ -119,11 +177,59 @@ add_int_range(
 ) → int
 ```
 
-Add an integer range to the GUI. :param tag: tag to identify the widget :param args: args for the prompt 
+Add an integer range to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`vmin`</b> (int):  Minimum value of the range. 
+ - <b>`vmax`</b> (int):  Maximum value of the range. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`int`</b>:  The integer entered. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L113"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L256"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+
+### <kbd>method</kbd> `add_path_completer`
+
+```python
+add_path_completer(
+    tag: str,
+    message: str,
+    *args,
+    remember_value=False,
+    **kwargs
+) → Path
+```
+
+Add a path completer to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`Path`</b>:  The path entered. 
+
+---
+
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L130"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_text`
 
@@ -131,11 +237,25 @@ Add an integer range to the GUI. :param tag: tag to identify the widget :param a
 add_text(tag: str, message: str, *args, remember_value=False, **kwargs) → str
 ```
 
-Add a text prompt to the GUI. :param tag: tag to identify the widget :param args: args for the prompt :param remember_value: remember the last value :param kwargs: kwargs for the prompt :return: the text entered 
+Add a text prompt to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`str`</b>:  The text entered. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L82"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L96"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `add_yes_no`
 
@@ -143,11 +263,25 @@ Add a text prompt to the GUI. :param tag: tag to identify the widget :param args
 add_yes_no(tag: str, message: str, *args, remember_value=False, **kwargs) → bool
 ```
 
-Add a yes/no prompt to the GUI. :param tag: tag to identify the widget :param args: args for the prompt :param remember_value: remember the last value :param kwargs: kwargs for the prompt :return: True if yes, False if no 
+Add a yes/no prompt to the GUI. 
+
+
+
+**Args:**
+ 
+ - <b>`tag`</b> (str):  Tag to identify the widget. 
+ - <b>`message`</b> (str):  The message to display. 
+ - <b>`remember_value`</b> (bool, optional):  Remember the last value. Defaults to False. 
+
+
+
+**Returns:**
+ 
+ - <b>`bool`</b>:  True if yes, False if no. 
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L230"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L293"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `restore_default_settings`
 
@@ -159,7 +293,7 @@ Restore the default settings.
 
 ---
 
-<a href="../easy_gui_prompt/easy_gui_prompt.py#L224"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
+<a href="../easy_gui_prompt/easy_gui_prompt.py#L287"><img align="right" style="float:right;" src="https://img.shields.io/badge/-source-cccccc?style=flat-square"></a>
 
 ### <kbd>method</kbd> `save_settings`
 
