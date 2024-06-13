@@ -23,7 +23,7 @@ pytest:
 	poetry run pytest
 
 mypy:
-	poetry run mypy --ignore-missing-imports easy_gui_prompt
+	poetry run mypy --ignore-missing-imports src
 
 mypy-types:
 	poetry run mypy --install-types
